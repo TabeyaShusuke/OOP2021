@@ -17,30 +17,24 @@ namespace DistanceConverter {
 
         //feet to m
         private static void PrintFeetToMeterList(int start,int stop) {
+
+            FeetConverter f = new FeetConverter();
+
             for (int feet = start; feet <= stop; feet++) {
-                double meter = FeetToMeter(feet);
+                double meter = f.ToMeter(feet);
                 Console.WriteLine("{0} ft = {1:0.0000} m", feet, meter);
             }
         }
 
-
         //m to feet
         private static void PrintMeterToFeetList(int start, int stop) {
+
+            FeetConverter f = new FeetConverter();
+
             for (int meter = start; meter <= stop; meter++) {
-                double feet = MeterToFeet(meter);
+                double feet = f.FromMeter(meter);
                 Console.WriteLine("{0} m = {1:0.0000} ft", meter, feet);
             }
-        }
-
-
-        //feetからmを求める
-        static double FeetToMeter(int feet) {
-            return feet * 0.3048;
-        }
-
-        //mからfeetを求める
-        static double MeterToFeet(int meter) {
-            return meter / 0.3048;
         }
     }
 }
