@@ -17,4 +17,7 @@ namespace SalesCalculator {
         public int Amount { get; set; }
 
     }
+
+    
+
 }
