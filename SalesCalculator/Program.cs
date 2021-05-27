@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 namespace SalesCalculator {
     class Program {
         static void Main(string[] args) {
-           
+            //List<Sale> sales = ReadSales("sales.csv");
 
         }
+
+        //売り上げデータを読み込みSaleオブジェクトのリストを返す
         static List<Sale> ReadSales(string filePath) { 
             List<Sale> sales = new List<Sale>();
             string[] lines = File.ReadAllLines(filePath);
@@ -22,9 +24,9 @@ namespace SalesCalculator {
                     Amount = int.Parse(items[2])
                 };
                 sales.Add(sale);
-	        }
+	        
+            }
             return sales;
-        }
-        
+        }        
     }
 }
