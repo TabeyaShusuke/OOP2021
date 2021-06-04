@@ -52,14 +52,14 @@ namespace Practice {
         }
 
         private static void Exercise2_4(List<string> names) {
-            var bnames = names.Where(s => s.ToString().StartsWith("B")).Select(s => s.Length);
+            var bnames = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
             foreach (var n in bnames) {
                 Console.WriteLine(n);
             }
         }
 
         private static void Exercise2_3(List<string> names) {
-            var extraction = names.Where(s => s.ToString().Contains('o'));
+            var extraction = names.Where(s => s.Contains('o')).ToArray();
             foreach (var oname in extraction) {
                 Console.WriteLine(oname);
             }
