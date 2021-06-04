@@ -73,8 +73,8 @@ namespace Practice {
 
         private static void Exercise2_1(List<string> names) {
             Console.Write("都市名:");
-            var Line = Console.ReadLine();
-            var search = names.FindIndex(s => s == Line);
+            var line = Console.ReadLine();
+            var search = names.FindIndex(s => s == line);
                 Console.WriteLine(search);
         }
 
