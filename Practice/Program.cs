@@ -48,7 +48,13 @@ namespace Practice {
         }
 
         private static void Exercise3_1(List<string> names) {
+            int count = 0;
             
+            
+            foreach (var name in names) {
+                count += name.Count(c => char.IsLower(c));
+            }
+            Console.WriteLine(count);
         }
 
         private static void Exercise2_4(List<string> names) {
