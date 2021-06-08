@@ -47,10 +47,13 @@ namespace Practice {
             Console.WriteLine("-----");
         }
 
+        //done
         private static void Exercise3_1(List<string> names) {
             int count = 0;
-            
-            
+
+            //これを改善し一行で！！！！
+            //names.ForEach(n => count += n.Count(c => char.IsLower(c)));
+
             foreach (var name in names) {
                 count += name.Count(c => char.IsLower(c));
             }
