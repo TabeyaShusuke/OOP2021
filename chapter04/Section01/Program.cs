@@ -25,9 +25,29 @@ namespace Section01 {
 
             //var ret =  GetProductA();
 
-            int count = 0;
-            Console.WriteLine($"後置:{count++}");
-            Console.WriteLine($"前置:{++count}");
+            //int count = 0;
+            //Console.WriteLine($"後置:{count++}");
+            //Console.WriteLine($"前置:{++count}");
+
+            //var str = "123a";
+            //int height;
+            //if (int.TryParse(str,out var height)) {
+            //    Console.WriteLine(height);
+            //} else {
+            //    Console.WriteLine("変換不可");
+            //}
+
+
+            var Session = new Dictionary<string, object>();
+            Session["MyProduct"] = new Product();
+            var product = Session["MyProduct"] as Product;
+            if (product == null) {
+                //できないとき
+                Console.WriteLine("product取得できません。");
+            } else {
+                //できるとき
+                Console.WriteLine("product取得できました。");
+            }
 
         }
 
@@ -46,6 +66,7 @@ namespace Section01 {
         //    return code;
         //}
     }
+
     class Sale {
         public string ShopName { get; set; } = "abcde";
         public int Amount { get; set; } = 12340;
