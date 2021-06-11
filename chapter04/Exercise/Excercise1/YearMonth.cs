@@ -15,7 +15,7 @@ namespace Excercise1 {
             Month = month;
         }
 
-        //2
+        //2  21世紀ならtrue プロパティ
         public bool Is21Century {
             get {
                 return 2001 <= Year && Year <= 2100;

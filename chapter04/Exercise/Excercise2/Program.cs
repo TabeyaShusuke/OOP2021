@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Excercise2 {
     class Program {
         static void Main(string[] args) {
-            var yms = new YearMonth[] { new YearMonth(2980, 3), new YearMonth(2035, 4),
+            var yms = new YearMonth[] { new YearMonth(1980, 12), new YearMonth(2035, 4),
                 new YearMonth(2000, 5), new YearMonth(2002, 12), new YearMonth(2020, 3), };
 
             
@@ -39,9 +39,11 @@ namespace Excercise2 {
         }
 
         static YearMonth Fc2(YearMonth[] yms) {
+            
             foreach (var ym in yms) {
                 if (ym.Is21Century) 
                     return ym;
+                    //Console.WriteLine(ym.Is21Century);
                 }
                 return null;
         }
