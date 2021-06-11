@@ -8,19 +8,49 @@ using System.Threading.Tasks;
 namespace Excercise2 {
     class Program {
         static void Main(string[] args) {
-           var ym1 = new YearMonth(1999,3);
-           var ym2 = new YearMonth(1999,4);
-           var ym3 = new YearMonth(1999,5);
-           var ym4 = new YearMonth(1999,6);
-           var ym5 = new YearMonth(1999,12);
-            var yms = new YearMonth[] {ym1,ym2,ym3,ym4,ym5,};
+            var yms = new YearMonth[] { new YearMonth(2980, 3), new YearMonth(2035, 4),
+                new YearMonth(2000, 5), new YearMonth(2002, 12), new YearMonth(2020, 3), };
 
-            for (int i = 0; i < yms.Length; i++) {
-                Console.WriteLine(yms[i]);
+            
+
+            Excercise2_2(yms);
+            Console.WriteLine("--------");
+
+            Excercise2_4(yms);
+            Console.WriteLine("--------");
+
+            Excercise2_5(yms);
+            Console.WriteLine("--------");
+
+        }
+
+        
+
+        private static void Excercise2_2(YearMonth[] yms) {
+            foreach (var a in yms) {
+                Console.WriteLine(a);
             }
+        }
 
+        private static void Excercise2_4(YearMonth[] yms) {
+            var ry = Fc2(yms);
+            var year = ry == null ? "21世紀ではありません":ry.ToString();
+            Console.WriteLine(year);
+        }
 
-
+        static YearMonth Fc2(YearMonth[] yms) {
+            foreach (var ym in yms) {
+                if (ym.Is21Century) 
+                    return ym;
+                }
+                return null;
+        }
+        
+        private static void Excercise2_5(YearMonth[] yms) {
+            var add = yms.Select(ym => ym.AddOneMonth()).OrderBy(ym => ym.Year).ToArray();
+            foreach (var b in add) {
+                Console.WriteLine(b);
+            }
         }
     }
 }
