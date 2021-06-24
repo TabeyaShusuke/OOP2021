@@ -38,16 +38,16 @@ namespace Test02 {
         private static void Exercise01(List<int> numbers) {
             var sum = numbers.Sum();
             Console.WriteLine(sum);
-
+            //Console.WriteLine(numbers.Sum());
 
         }
 
         //問題２　偶数の最大値を表示
         //　　　　出力結果【94】
         private static void Exercise02(List<int> numbers) {
-            var max = numbers.Max();
+            var max = numbers.Where(n => n % 2 == 0).Max();
             Console.WriteLine(max);
-
+            //Console.WriteLine(numbers.Max());
 
         }
         //問題３　昇順に並べて表示（遅延実行とする）
