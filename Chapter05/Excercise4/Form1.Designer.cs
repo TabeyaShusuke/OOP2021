@@ -55,23 +55,27 @@ namespace Excercise4 {
             // 
             // Text5_4
             // 
+            this.Text5_4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Text5_4.Location = new System.Drawing.Point(185, 110);
+            this.Text5_4.Multiline = true;
             this.Text5_4.Name = "Text5_4";
-            this.Text5_4.Size = new System.Drawing.Size(418, 19);
+            this.Text5_4.Size = new System.Drawing.Size(418, 178);
             this.Text5_4.TabIndex = 2;
             // 
             // Text5_41
             // 
-            this.Text5_41.Location = new System.Drawing.Point(185, 175);
+            this.Text5_41.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Text5_41.Location = new System.Drawing.Point(185, 316);
             this.Text5_41.Name = "Text5_41";
-            this.Text5_41.Size = new System.Drawing.Size(418, 19);
+            this.Text5_41.Size = new System.Drawing.Size(418, 31);
             this.Text5_41.TabIndex = 3;
             // 
             // Text5_42
             // 
-            this.Text5_42.Location = new System.Drawing.Point(185, 244);
+            this.Text5_42.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Text5_42.Location = new System.Drawing.Point(185, 387);
             this.Text5_42.Name = "Text5_42";
-            this.Text5_42.Size = new System.Drawing.Size(418, 19);
+            this.Text5_42.Size = new System.Drawing.Size(418, 31);
             this.Text5_42.TabIndex = 4;
             // 
             // Title
