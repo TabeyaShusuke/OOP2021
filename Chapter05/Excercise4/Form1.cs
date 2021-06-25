@@ -37,6 +37,7 @@ namespace Excercise4 {
             //var endind3 = title.IndexOf(" ", startind3);
             //Text5_42.Text = "誕生年:"+title.Substring(startind3);
 
+            //解答
             //Novelist=谷崎潤一郎
             //BestWork=春琴抄
             //Born=1886
