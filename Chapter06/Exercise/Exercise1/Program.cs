@@ -20,7 +20,8 @@ namespace Exercise1 {
             Console.WriteLine("--------------");
 
             //3
-            foreach (var item in numbers) {
+            var num = numbers.Select(n => n.ToString());
+            foreach (var item in num) {
                 Console.WriteLine(item.ToString());
             }
             Console.WriteLine("--------------");
