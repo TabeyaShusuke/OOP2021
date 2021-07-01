@@ -65,6 +65,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Excercise", "Excercise", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise2", "Chapter06\Exercise\Exercise2\Exercise2.csproj", "{DD0758FC-4EA5-4A7C-9B17-53A3F48D65FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S1", "Chapter07\S1\S1.csproj", "{B17B9099-F354-43EB-A195-78B6DFE59D42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter07", "Chapter07", "{0D14F565-9907-4823-9C55-8B2AD796566C}"
+	ProjectSection(SolutionItems) = preProject
+		\\172.16.42.1\学生共有\#infosys2021\２期目\Chapter07\Section03\Program.cs = \\172.16.42.1\学生共有\#infosys2021\２期目\Chapter07\Section03\Program.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +154,10 @@ Global
 		{DD0758FC-4EA5-4A7C-9B17-53A3F48D65FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD0758FC-4EA5-4A7C-9B17-53A3F48D65FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD0758FC-4EA5-4A7C-9B17-53A3F48D65FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B17B9099-F354-43EB-A195-78B6DFE59D42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B17B9099-F354-43EB-A195-78B6DFE59D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B17B9099-F354-43EB-A195-78B6DFE59D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B17B9099-F354-43EB-A195-78B6DFE59D42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,6 +188,7 @@ Global
 		{13F76B55-DB6B-4769-A4E3-B7E67C5BF71B} = {A2C4F6F1-7C92-4D4C-8193-504E245DEDB9}
 		{A2C4F6F1-7C92-4D4C-8193-504E245DEDB9} = {F85BF717-0AC3-49D1-ABD0-CA65A6EFBA53}
 		{DD0758FC-4EA5-4A7C-9B17-53A3F48D65FF} = {A2C4F6F1-7C92-4D4C-8193-504E245DEDB9}
+		{B17B9099-F354-43EB-A195-78B6DFE59D42} = {0D14F565-9907-4823-9C55-8B2AD796566C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29661B6C-20CF-423E-BCD6-7CF97CCF91F3}

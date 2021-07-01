@@ -36,7 +36,7 @@ namespace Exercise1 {
             //5
             var dis = numbers.Distinct();
             Console.WriteLine(dis.Count(x => 10 < x));
-            
+            Console.WriteLine("--------------");
 
         }
 
