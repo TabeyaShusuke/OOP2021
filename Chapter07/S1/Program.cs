@@ -16,7 +16,7 @@ namespace S1 {
         private static void Exercise1_1(string text) {
             var dict = new Dictionary<Char,int>();
             foreach (var t in text) {
-                var s = char.ToUpper(t);
+                var s = char.ToUpper(t);//大文字小文字区別しないすべて大文字に変換して処理
                 if ('A' <= s && s <='Z') {
                     if (dict.ContainsKey(s))
                         dict[s]++;
@@ -24,9 +24,9 @@ namespace S1 {
                         dict[s] = 1;
                 }
             }
-
+            
             foreach (var item in dict.OrderBy(x => x.Key)) {
-                Console.WriteLine("{0},{1}", item.Key, item.Value);
+                Console.WriteLine("{0}:{1}", item.Key, item.Value);
             }
         }
 
@@ -45,10 +45,6 @@ namespace S1 {
             foreach (var item in dict) {
                 Console.WriteLine("{0},{1}",item.Key,item.Value);
             }
-
-
-
-            
         }
     }
 }
