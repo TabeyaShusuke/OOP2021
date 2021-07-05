@@ -45,11 +45,23 @@ namespace Section03 {
             Console.WriteLine(abbrs.Count);
             Console.WriteLine("------------");
 
-            Console.WriteLine(abbrs.Remove("ILO"));
-            Console.WriteLine(abbrs.Remove("IOC"));
+            
+            if (abbrs.Remove("IOC")) {
+                Console.WriteLine("delete");
+            } 
+
+            if (abbrs.Remove("IOC")) {
+                Console.WriteLine("delete");
+            } else {
+                Console.WriteLine("error");
+            }
             Console.WriteLine("------------");
 
-            abbrs.dis();
+            abbrs.Dis();
+            Console.WriteLine("------------");
+            foreach (var item in abbrs.Where(x =>x.Key.Length == 3)) {
+                Console.WriteLine("{0}={1}",item.Key,item.Value);
+            }
 
         }
     }
