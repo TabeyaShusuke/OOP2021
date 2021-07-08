@@ -35,6 +35,7 @@ namespace Exercise2 {
         private void btReset_Click(object sender, EventArgs e) {
             sw.Reset();
             lbox.Items.Clear();
+            lb1.Text = sw.Elapsed.ToString(@"hh\:mm\:ss\.ff");
         }
 
         private void tmLevolution_Tick(object sender, EventArgs e) {
