@@ -14,19 +14,20 @@ namespace CarReportSystem {
         public string Report { get; set; }//レポート
         public Image Picture { get; set; }//画像
 
-        //public CarReport(DateTime date,
-        //                 string auther,
-        //                 MakerGroup maker,
-        //                 string carname,
-        //                 string report,
-        //                 Image picture) {
-        //    this.Date = date;
-        //    this.Auther = auther;
-        //    this.Maker = maker;
-        //    this.CarName = carname;
-        //    this.Report = report;
-        //    this.Picture = picture;
-        //}
+        //date 更新用
+        public void UpDate(DateTime date,
+                         string auther,
+                         MakerGroup maker,
+                         string carname,
+                         string report,
+                         Image picture) {
+            this.Date = date;
+            this.Auther = auther;
+            this.Maker = maker;
+            this.CarName = carname;
+            this.Report = report;
+            this.Picture = picture;
+        }
         //メーカー
         public enum MakerGroup {
             トヨタ,

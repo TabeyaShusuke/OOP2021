@@ -47,15 +47,12 @@ namespace CarReportSystem {
                 CarName = cbCarName.Text,
                 Report = tbReport.Text,
             };
-            
             listCarReport.Add(carReport);//1レコード追加
             setCbAuthor(cbAuthor.Text);
             setCbCarName(cbCarName.Text);
         }
 
         private CarReport.MakerGroup selectedGroup() {
-            
-            
             foreach (var rb in gbMaker.Controls) {
                 if (((RadioButton)rb).Checked) {
                     return (CarReport.MakerGroup)int.Parse(((string)((RadioButton)rb).Tag));
@@ -69,7 +66,6 @@ namespace CarReportSystem {
             if (!cbAuthor.Items.Contains(author)) {
                 cbAuthor.Items.Add(author);
             }
-            
         }
 
         //combbox carname
@@ -79,5 +75,40 @@ namespace CarReportSystem {
             }
         }
 
+        private void dgvRegistData_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (e.RowIndex == -1) return;
+
+            //選択された行のデータを取得
+            CarReport selectedCar = listCarReport[e.RowIndex];
+            
+            //取得したデータ項目
+            dtpDate.Value = selectedCar.Date;
+            cbAuthor.Text = selectedCar.Auther;
+            foreach (var rb in gbMaker.Controls) {
+                if ((CarReport.MakerGroup)int.Parse(((string)((RadioButton)rb).Tag)) == selectedCar.Maker) {
+                    ((RadioButton)rb).Checked = true;
+                    break;
+                }
+            }
+            cbCarName.Text = selectedCar.CarName;
+            tbReport.Text = selectedCar.Report;
+            pbPicture.Image = selectedCar.Picture;
+            
+           
+
+        }
+
+        private void btDataDelete_Click(object sender, EventArgs e) {
+            listCarReport.RemoveAt(dgvRegistData.CurrentRow.Index); 
+            
+
+        }
+
+        private void btDataCorrect_Click(object sender, EventArgs e) {
+            listCarReport[dgvRegistData.CurrentRow.Index].UpDate(dtpDate.Value,
+                cbAuthor.Text, selectedGroup(),
+                cbCarName.Text, tbReport.Text, pbPicture.Image);
+            dgvRegistData.Update();
+        }
     }
 }

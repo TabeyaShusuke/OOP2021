@@ -272,6 +272,7 @@ namespace CarReportSystem {
             // 
             // dgvRegistData
             // 
+            this.dgvRegistData.AllowUserToAddRows = false;
             this.dgvRegistData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRegistData.Location = new System.Drawing.Point(87, 347);
             this.dgvRegistData.MultiSelect = false;
@@ -280,6 +281,7 @@ namespace CarReportSystem {
             this.dgvRegistData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRegistData.Size = new System.Drawing.Size(645, 237);
             this.dgvRegistData.TabIndex = 6;
+            this.dgvRegistData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistData_CellClick);
             // 
             // pbPicture
             // 
@@ -311,6 +313,7 @@ namespace CarReportSystem {
             this.btDataCorrect.TabIndex = 8;
             this.btDataCorrect.Text = "修正";
             this.btDataCorrect.UseVisualStyleBackColor = true;
+            this.btDataCorrect.Click += new System.EventHandler(this.btDataCorrect_Click);
             // 
             // btDataDelete
             // 
@@ -321,6 +324,7 @@ namespace CarReportSystem {
             this.btDataDelete.TabIndex = 8;
             this.btDataDelete.Text = "削除";
             this.btDataDelete.UseVisualStyleBackColor = true;
+            this.btDataDelete.Click += new System.EventHandler(this.btDataDelete_Click);
             // 
             // btOpen
             // 
