@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -93,12 +95,10 @@ namespace CarReportSystem {
             cbCarName.Text = selectedCar.CarName;
             tbReport.Text = selectedCar.Report;
             pbPicture.Image = selectedCar.Picture;
-            
-           
-
         }
 
         private void btDataDelete_Click(object sender, EventArgs e) {
+
             listCarReport.RemoveAt(dgvRegistData.CurrentRow.Index); 
             
 
@@ -106,9 +106,32 @@ namespace CarReportSystem {
 
         private void btDataCorrect_Click(object sender, EventArgs e) {
             listCarReport[dgvRegistData.CurrentRow.Index].UpDate(dtpDate.Value,
-                cbAuthor.Text, selectedGroup(),
-                cbCarName.Text, tbReport.Text, pbPicture.Image);
-            dgvRegistData.Update();
+                                                            cbAuthor.Text, selectedGroup(),
+                                                            cbCarName.Text, tbReport.Text, pbPicture.Image);
+            dgvRegistData.Refresh();//controlの強制再描画
+        }
+
+        private void btSave_Click(object sender, EventArgs e) {
+            if(sfdFileSave.ShowDialog() == DialogResult.OK) {
+                //バイナリ形式でシリアル化
+                var bf = new BinaryFormatter();
+                using (FileStream fs = File.Open(sfdFileSave.FileName,FileMode.Create)) {
+                    bf.Serialize(fs, listCarReport);
+                }
+            }
+        }
+
+        private void btOpen_Click(object sender, EventArgs e) {
+            if(ofdFileOpen.ShowDialog() == DialogResult.OK) {
+                //バイナリ形式で逆シリアル化
+                var bf = new BinaryFormatter();
+                using (FileStream fs = File.Open(ofdFileOpen.FileName,FileMode.Open,FileAccess.Read)) {
+                    //逆シリアル化
+                    listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
+                    dgvRegistData.DataSource = null;
+                    dgvRegistData.DataSource = listCarReport;
+                }
+            }
         }
     }
 }
