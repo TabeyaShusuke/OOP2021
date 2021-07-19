@@ -30,6 +30,7 @@ namespace Exercise1 {
             this.tbKey = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btReadAllLines = new System.Windows.Forms.Button();
+            this.bts = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ofdOpenFile
@@ -80,11 +81,22 @@ namespace Exercise1 {
             this.btReadAllLines.UseVisualStyleBackColor = true;
             this.btReadAllLines.Click += new System.EventHandler(this.btReadAllLines_Click);
             // 
+            // bts
+            // 
+            this.bts.Location = new System.Drawing.Point(502, 25);
+            this.bts.Name = "bts";
+            this.bts.Size = new System.Drawing.Size(163, 56);
+            this.bts.TabIndex = 5;
+            this.bts.Text = "Readlines";
+            this.bts.UseVisualStyleBackColor = true;
+            this.bts.Click += new System.EventHandler(this.bts_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bts);
             this.Controls.Add(this.btReadAllLines);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbKey);
@@ -105,6 +117,7 @@ namespace Exercise1 {
         private System.Windows.Forms.TextBox tbKey;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btReadAllLines;
+        private System.Windows.Forms.Button bts;
     }
 }
 

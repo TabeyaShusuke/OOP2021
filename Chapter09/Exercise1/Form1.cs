@@ -34,8 +34,28 @@ namespace Exercise1 {
 
         private void btReadAllLines_Click(object sender, EventArgs e) {
             if (ofdOpenFile.ShowDialog() == DialogResult.OK) {
-                var lines = File.ReadAllLines(ofdOpenFile.FileName, Encoding.GetEncoding("shift_jis"));
+                int count = 0;
+                var lines = File.ReadLines(ofdOpenFile.FileName, Encoding.GetEncoding("shift_jis"));
+                foreach (var item in lines) {
+                    if (item.Contains(tbKey.Text)) count++;
+                    tbOutput.Text = tbKey.Text + count.ToString();
+                }
             }
         }
+
+        private void bts_Click(object sender, EventArgs e) {
+            if (ofdOpenFile.ShowDialog() == DialogResult.OK) {
+                var lines = File.ReadLines(ofdOpenFile.FileName, Encoding.GetEncoding("shift_jis"));
+                int count = 0;
+                foreach (var line in lines) {
+                    if (line.Contains(tbKey.Text)) {
+                        count++;
+                    }
+                    tbOutput.Text = tbKey.Text + count.ToString();
+                }
+            }
+        }
+
+        
     }
 }
