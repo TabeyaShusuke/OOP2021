@@ -31,18 +31,20 @@ namespace Exercise2 {
             // 
             // tbNumber
             // 
-            this.tbNumber.Location = new System.Drawing.Point(36, 148);
+            this.tbNumber.Location = new System.Drawing.Point(48, 185);
+            this.tbNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbNumber.Multiline = true;
             this.tbNumber.Name = "tbNumber";
-            this.tbNumber.Size = new System.Drawing.Size(706, 361);
+            this.tbNumber.Size = new System.Drawing.Size(940, 450);
             this.tbNumber.TabIndex = 0;
             // 
             // bt1
             // 
             this.bt1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.bt1.Location = new System.Drawing.Point(52, 55);
+            this.bt1.Location = new System.Drawing.Point(48, 69);
+            this.bt1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bt1.Name = "bt1";
-            this.bt1.Size = new System.Drawing.Size(117, 49);
+            this.bt1.Size = new System.Drawing.Size(156, 61);
             this.bt1.TabIndex = 1;
             this.bt1.Text = "open";
             this.bt1.UseVisualStyleBackColor = true;
@@ -54,11 +56,12 @@ namespace Exercise2 {
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 536);
+            this.ClientSize = new System.Drawing.Size(1077, 670);
             this.Controls.Add(this.bt1);
             this.Controls.Add(this.tbNumber);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
