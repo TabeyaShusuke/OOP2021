@@ -16,13 +16,13 @@ using System.Runtime.InteropServices;
 
 // ComVisible を false に設定すると、このアセンブリ内の型は COM コンポーネントから
 // 参照できなくなります。COM からこのアセンブリ内の型にアクセスする必要がある場合は、
-// その型の ComVisible 属性を true に設定します。
+// その型の ComVisible 属性を true に設定してください。
 [assembly: ComVisible(false)]
 
 // このプロジェクトが COM に公開される場合、次の GUID が typelib の ID になります
-[assembly: Guid("bd61da81-d145-4963-ad10-8ab2047e917c")]
+[assembly: Guid("0f87d1c2-3785-444a-916c-9c36fa0cd39e")]
 
-// アセンブリのバージョン情報は次の 4 つの値で構成されています:
+// アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
 //
 //      メジャー バージョン
 //      マイナー バージョン
