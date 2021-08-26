@@ -18,6 +18,11 @@ namespace Sample0823 {
             int n = int.Parse(Value.Text);
             int m = int.Parse(Jyou.Text);
             Result.Text = Math.Pow(n,m).ToString();
+            //var jou = n;
+            //for (int i = 1; i < m ; i++) {
+            //    jou = n * jou;
+            //}
+            //Result.Text = jou.ToString();
         }
     }
 }
