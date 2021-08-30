@@ -22,8 +22,7 @@ namespace Exercise1 {
             var newfile = "sports.xml";
             Exercise1_4(file,newfile);
             Console.WriteLine("---------------------------------");
-            var text = File.ReadAllText(newfile);
-            Console.WriteLine(text);
+            
 
 
 
@@ -39,12 +38,12 @@ namespace Exercise1 {
             var xdoc = XDocument.Load(file);
             xdoc.Root.Add(element);
             xdoc.Save(newfile);
-            foreach (var item in xdoc.Root.Elements()) {
-                var xname = item.Element("name");
-                var member = item.Element("teammembers");
-                var xyear = item.Element("firstplayed");
-                Console.WriteLine("競技名:{0} 人数:{1} 年:{2}",xname.Value,member.Value,xyear.Value);
-            }
+            //foreach (var item in xdoc.Root.Elements()) {
+            //    var xname = item.Element("name");
+            //    var member = item.Element("teammembers");
+            //    var xyear = item.Element("firstplayed");
+            //    Console.WriteLine("競技名:{0} 人数:{1} 年:{2}",xname.Value,member.Value,xyear.Value);
+            //}
         }
 
         private static void Exercise1_1(string file) {
