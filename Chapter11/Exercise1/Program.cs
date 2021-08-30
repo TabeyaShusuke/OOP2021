@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,33 @@ namespace Exercise1 {
 
             Exercise1_3(file);
             Console.WriteLine("---------------------------------");
-           
 
-            
+            var newfile = "sports.xml";
+            Exercise1_4(file,newfile);
+            Console.WriteLine("---------------------------------");
+            var text = File.ReadAllText(newfile);
+            Console.WriteLine(text);
 
 
+
+
+        }
+
+        private static void Exercise1_4(string file, string newfile) {
+            var element = new XElement("ballsports",
+                                new XElement("name","サッカー",new XAttribute("kanji","蹴球")),
+                                new XElement("teammembers","11"),
+                                new XElement("firstplayed", "1863")
+                              );
+            var xdoc = XDocument.Load(file);
+            xdoc.Root.Add(element);
+            xdoc.Save(newfile);
+            foreach (var item in xdoc.Root.Elements()) {
+                var xname = item.Element("name");
+                var member = item.Element("teammembers");
+                var xyear = item.Element("firstplayed");
+                Console.WriteLine("競技名:{0} 人数:{1} 年:{2}",xname.Value,member.Value,xyear.Value);
+            }
         }
 
         private static void Exercise1_1(string file) {
