@@ -79,7 +79,7 @@ namespace Section04 {
                 XDocument xdoc = XDocument.Load(stream);
                 var nodes = xdoc.Root.Descendants("title");
                 foreach (var node in nodes) {
-                    string s = Regex.Replace(node.Value, "【|】", "");
+                    string s = Regex.Replace(node.Value, "【|】 | - Yahoo!天気・災害", "");
                     yield return s;
                 }
             }
