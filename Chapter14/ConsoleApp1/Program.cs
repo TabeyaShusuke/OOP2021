@@ -17,23 +17,18 @@ namespace Section04 {
 
         //コンストラクタ
         public Program() {
-            Console.Write("コード入力:");
+            Console.WriteLine("yahoo!週間天気予報");
+            Console.WriteLine();
+            Console.WriteLine("コード入力");
+            Console.WriteLine("1:前橋");
+            Console.WriteLine("2:みなかみ");
+            Console.WriteLine("3:宇都宮");
+            Console.WriteLine("4:水戸");
+            Console.WriteLine("9:その他　（直接入力）");
+            Console.Write(">");
             var code = int.Parse(Console.ReadLine());
            
-            //if (code == 1) {
-            //    results = GetWeatherReportFromYahoo(4210);
-            //} else if (code == 2) {
-            //    results = GetWeatherReportFromYahoo(4220);
-            //} else if (code == 3) {
-            //    results = GetWeatherReportFromYahoo(4110);
-            //} else if (code == 4) {
-            //    results = GetWeatherReportFromYahoo(4010);
-            //} else if (code == 9) {
-            //    results = GetWeatherReportFromYahoo(code);
-            //} else {
-            //    Console.WriteLine("error");
-            //}
-
+            
             switch (code) {
                             
                 case 1:
@@ -54,6 +49,7 @@ namespace Section04 {
                     break;
                 default:
                     Console.WriteLine("正しく入力して下さい");
+
                     new Program();
                     break;
             
