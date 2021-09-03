@@ -17,10 +17,49 @@ namespace Section04 {
 
         //コンストラクタ
         public Program() {
-            //DownloadString();
-            //DownloadFileAsync();
-            //OpenReadSample();
-            var results = GetWeatherReportFromYahoo(4610);
+            Console.Write("コード入力:");
+            var code = int.Parse(Console.ReadLine());
+           
+            //if (code == 1) {
+            //    results = GetWeatherReportFromYahoo(4210);
+            //} else if (code == 2) {
+            //    results = GetWeatherReportFromYahoo(4220);
+            //} else if (code == 3) {
+            //    results = GetWeatherReportFromYahoo(4110);
+            //} else if (code == 4) {
+            //    results = GetWeatherReportFromYahoo(4010);
+            //} else if (code == 9) {
+            //    results = GetWeatherReportFromYahoo(code);
+            //} else {
+            //    Console.WriteLine("error");
+            //}
+
+            switch (code) {
+                            
+                case 1:
+                    code = 4210;
+                    break;
+                case 2:
+                    code = 4220;
+                    break;
+                case 3:
+                    code = 4110;
+                    break;
+                case 4:
+                    code = 4010;
+                    break;
+                case 9:
+                    Console.Write("コード入力:");
+                    code = int.Parse(Console.ReadLine());
+                    break;
+                default:
+                    Console.WriteLine("正しく入力して下さい");
+                    new Program();
+                    break;
+            
+
+        }
+            var results = GetWeatherReportFromYahoo(code);
             foreach (var s in results) {
                 Console.WriteLine(s);
             }
