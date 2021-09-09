@@ -10,6 +10,14 @@ using System.Xml.Linq;
 
 namespace Section04 {
     class Program {
+
+        Dictionary<string, int> AreaDic = new Dictionary<string, int>() {
+            {"前橋",4210 },
+            {"みなかみ",4220 },
+            {"宇都宮",4110 },
+            {"水戸",4010 },
+        };
+
         static void Main(string[] args) {
             new Program();
             
@@ -19,12 +27,20 @@ namespace Section04 {
         public Program() {
             Console.WriteLine("yahoo!週間天気予報");
             Console.WriteLine();
-            Console.WriteLine("コード入力");
-            Console.WriteLine("1:前橋");
-            Console.WriteLine("2:みなかみ");
-            Console.WriteLine("3:宇都宮");
-            Console.WriteLine("4:水戸");
+            Console.WriteLine("地域コード入力");
+            int num = 1;
+            foreach (KeyValuePair<string, int>  pair in AreaDic) {
+                
+                Console.WriteLine("{0}:{1}", num++ , pair.Key);
+                
+            }
+            
+            //Console.WriteLine("1:前橋");
+            //Console.WriteLine("2:みなかみ");
+            //Console.WriteLine("3:宇都宮");
+            //Console.WriteLine("4:水戸");
             Console.WriteLine("9:その他　（直接入力）");
+            Console.WriteLine();
             Console.Write(">");
             var code = int.Parse(Console.ReadLine());
            
