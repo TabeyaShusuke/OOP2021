@@ -14,7 +14,7 @@ using System.Xml.Linq;
 namespace RssReader {
     public partial class Form1 : Form {
         List<string> rss = new List<string>();
-
+        List<string> tietle = new List<string>();
         public Form1() {
             InitializeComponent();
         }
@@ -34,13 +34,16 @@ namespace RssReader {
                 foreach (var node in nodes) {
                     lbTitles.Items.Add(node.Element("title").Value);
                     rss.Add(node.Element("link").Value);
+                    tietle.Add(node.Element("description").Value);
                 }
+                
             }
         }
 
-        private void lbTitles_SelectedIndexChanged(object sender, EventArgs e) {
+        private void lbTitles_Click(object sender, EventArgs e) {
             var titlenum = lbTitles.SelectedIndex;
             wbBrowser.Url = new Uri(rss[titlenum]);
+            label2.Text += tietle.ToString();
         }
     }
 }
