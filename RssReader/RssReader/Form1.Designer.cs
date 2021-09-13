@@ -67,28 +67,28 @@ namespace RssReader {
             this.lbTitles.Location = new System.Drawing.Point(12, 204);
             this.lbTitles.Margin = new System.Windows.Forms.Padding(4);
             this.lbTitles.Name = "lbTitles";
-            this.lbTitles.Size = new System.Drawing.Size(177, 550);
+            this.lbTitles.Size = new System.Drawing.Size(340, 563);
             this.lbTitles.TabIndex = 2;
             this.lbTitles.Click += new System.EventHandler(this.lbTitles_Click);
             // 
             // wbBrowser
             // 
-            this.wbBrowser.Location = new System.Drawing.Point(197, 94);
+            this.wbBrowser.Location = new System.Drawing.Point(360, 106);
             this.wbBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(793, 660);
+            this.wbBrowser.Size = new System.Drawing.Size(834, 660);
             this.wbBrowser.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("メイリオ", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(1004, 94);
+            this.label2.Font = new System.Drawing.Font("BIZ UDP明朝 Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(12, 106);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 21);
+            this.label2.Size = new System.Drawing.Size(340, 94);
             this.label2.TabIndex = 4;
+            this.label2.Text = "label";
             // 
             // Form1
             // 

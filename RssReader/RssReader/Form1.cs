@@ -13,8 +13,8 @@ using System.Xml.Linq;
 
 namespace RssReader {
     public partial class Form1 : Form {
-        List<string> rss = new List<string>();
-        List<string> tietle = new List<string>();
+        IEnumerable<ItemData> items = null;
+
         public Form1() {
             InitializeComponent();
         }
@@ -23,27 +23,32 @@ namespace RssReader {
             setRssTitle(tbUrl.Text);
         }
 
-        //指定したURL先からXMLデータを取得し title要素 を取得し、リストボックスへセットする
+        //指定したURL先に
         private void setRssTitle(string uri) {
             using (var wc = new WebClient()) {
                 wc.Headers.Add("Content-type", "charset=UTF-8");
-                var url = new Uri(uri);
-                var stream = wc.OpenRead(url);
+                var stream = wc.OpenRead(uri);
                 XDocument xdoc = XDocument.Load(stream);
-                var nodes = xdoc.Root.Descendants("item");
-                foreach (var node in nodes) {
-                    lbTitles.Items.Add(node.Element("title").Value);
-                    rss.Add(node.Element("link").Value);
-                    tietle.Add(node.Element("description").Value);
+                items = xdoc.Root.Descendants("item").Select(x => new ItemData {
+                    Title = (string)x.Element("title"),
+                    Link = (string)x.Element("link"),
+                    PubDate = (DateTime)x.Element("pubDate"),
+                    Description = (string)x.Element("description")
+                });
+                foreach (var item in items) {
+                    lbTitles.Items.Add(item.Title);
                 }
-                
             }
         }
 
         private void lbTitles_Click(object sender, EventArgs e) {
-            var titlenum = lbTitles.SelectedIndex;
-            wbBrowser.Url = new Uri(rss[titlenum]);
-            label2.Text += tietle.ToString();
+            string link = (items.ToArray())[lbTitles.SelectedIndex].Link;
+            wbBrowser.Url = new Uri(link);
+
+            label2.Text = "概要\n";
+            label2.Text += (items.ToArray())[lbTitles.SelectedIndex].Description;
+
+
         }
     }
 }
