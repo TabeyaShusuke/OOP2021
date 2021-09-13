@@ -23,7 +23,6 @@ namespace RssReader {
             setRssTitle(tbUrl.Text);
         }
 
-        //指定したURL先に
         private void setRssTitle(string uri) {
             using (var wc = new WebClient()) {
                 wc.Headers.Add("Content-type", "charset=UTF-8");
@@ -42,13 +41,18 @@ namespace RssReader {
         }
 
         private void lbTitles_Click(object sender, EventArgs e) {
+            lbDate.Text = "更新日付\n";
+            lbDate.Text += (items.ToArray())[lbTitles.SelectedIndex].PubDate;
+            lbDescription.Text = "Description\n";
+            lbDescription.Text += (items.ToArray())[lbTitles.SelectedIndex].Description;
+        }
+
+        private void btWeb_Click(object sender, EventArgs e) {
+            Form2 form2 = new Form2();
+            form2.Show();
             string link = (items.ToArray())[lbTitles.SelectedIndex].Link;
-            wbBrowser.Url = new Uri(link);
 
-            label2.Text = "概要\n";
-            label2.Text += (items.ToArray())[lbTitles.SelectedIndex].Description;
-
-
+            form2.wbBrowser(link);
         }
     }
 }
