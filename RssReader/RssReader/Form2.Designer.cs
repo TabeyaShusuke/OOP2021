@@ -41,6 +41,7 @@ namespace RssReader {
             // 
             // btReturn
             // 
+            this.btReturn.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btReturn.Enabled = false;
             this.btReturn.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btReturn.Location = new System.Drawing.Point(21, 12);
@@ -48,11 +49,12 @@ namespace RssReader {
             this.btReturn.Size = new System.Drawing.Size(108, 39);
             this.btReturn.TabIndex = 1;
             this.btReturn.Text = "return";
-            this.btReturn.UseVisualStyleBackColor = true;
+            this.btReturn.UseVisualStyleBackColor = false;
             this.btReturn.Click += new System.EventHandler(this.btBack_Click);
             // 
             // btForward
             // 
+            this.btForward.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btForward.Enabled = false;
             this.btForward.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btForward.Location = new System.Drawing.Point(171, 12);
@@ -60,7 +62,7 @@ namespace RssReader {
             this.btForward.Size = new System.Drawing.Size(108, 39);
             this.btForward.TabIndex = 1;
             this.btForward.Text = "forward";
-            this.btForward.UseVisualStyleBackColor = true;
+            this.btForward.UseVisualStyleBackColor = false;
             this.btForward.Click += new System.EventHandler(this.btForward_Click);
             // 
             // Form2

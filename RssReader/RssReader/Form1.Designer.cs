@@ -53,13 +53,14 @@ namespace RssReader {
             // 
             // btRead
             // 
+            this.btRead.BackColor = System.Drawing.SystemColors.Window;
             this.btRead.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btRead.Location = new System.Drawing.Point(857, 50);
             this.btRead.Name = "btRead";
             this.btRead.Size = new System.Drawing.Size(75, 34);
             this.btRead.TabIndex = 2;
             this.btRead.Text = "読込";
-            this.btRead.UseVisualStyleBackColor = true;
+            this.btRead.UseVisualStyleBackColor = false;
             this.btRead.Click += new System.EventHandler(this.btRead_Click);
             // 
             // lbTitles
@@ -76,37 +77,39 @@ namespace RssReader {
             // 
             // lbDate
             // 
+            this.lbDate.BackColor = System.Drawing.SystemColors.Menu;
             this.lbDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbDate.Location = new System.Drawing.Point(391, 146);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(567, 98);
+            this.lbDate.Size = new System.Drawing.Size(546, 98);
             this.lbDate.TabIndex = 7;
-            this.lbDate.Text = "a";
             // 
             // btWeb
             // 
+            this.btWeb.BackColor = System.Drawing.SystemColors.Window;
             this.btWeb.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btWeb.Location = new System.Drawing.Point(823, 596);
             this.btWeb.Name = "btWeb";
             this.btWeb.Size = new System.Drawing.Size(109, 53);
             this.btWeb.TabIndex = 8;
             this.btWeb.Text = "WEB表示";
-            this.btWeb.UseVisualStyleBackColor = true;
+            this.btWeb.UseVisualStyleBackColor = false;
             this.btWeb.Click += new System.EventHandler(this.btWeb_Click);
             // 
             // lbDescription
             // 
+            this.lbDescription.BackColor = System.Drawing.SystemColors.Menu;
             this.lbDescription.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbDescription.Location = new System.Drawing.Point(391, 275);
             this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(567, 243);
+            this.lbDescription.Size = new System.Drawing.Size(546, 243);
             this.lbDescription.TabIndex = 9;
-            this.lbDescription.Text = "b";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(949, 662);
             this.Controls.Add(this.lbDescription);
             this.Controls.Add(this.btWeb);

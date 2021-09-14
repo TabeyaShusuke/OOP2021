@@ -36,17 +36,8 @@ namespace RssReader {
         }
 
         private void wbTitle_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
-            if (wbTitle.CanGoBack == true) {
-                btReturn.Enabled = true;
-            } else {
-                btReturn.Enabled = false;
-            }
-
-            if (wbTitle.CanGoForward == true) {
-                btForward.Enabled = true;
-            } else {
-                btForward.Enabled = false;
-            }
+            btReturn.Enabled = wbTitle.CanGoBack;
+            btForward.Enabled = wbTitle.CanGoForward;
         }
     }
 }
