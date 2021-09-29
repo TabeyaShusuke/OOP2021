@@ -24,6 +24,10 @@ namespace SendMail {
                 mailMessage.From = new MailAddress("ojsinfosys01@gmail.com");
                 //宛先（TO）
                 mailMessage.To.Add(tbTo.Text);
+                
+                mailMessage.CC.Add(tbCc.Text);
+
+                mailMessage.Bcc.Add(tbBcc.Text);
                 //件名(タイトル)
                 mailMessage.Subject = tbTitle.Text;
                 //本文
@@ -44,6 +48,10 @@ namespace SendMail {
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btConfig_Click(object sender, EventArgs e) {
+            new ConfigForm().ShowDialog();
         }
     }
 }
