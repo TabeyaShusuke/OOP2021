@@ -25,18 +25,18 @@ namespace SendMail {
         /// </summary>
         private void InitializeComponent() {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbUserName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbSsl = new System.Windows.Forms.CheckBox();
             this.tbPort = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
-            this.tbSender = new System.Windows.Forms.TextBox();
             this.tbHost = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbSender = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbSsl = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbUserName = new System.Windows.Forms.TextBox();
             this.btDefault = new System.Windows.Forms.Button();
             this.btOk = new System.Windows.Forms.Button();
             this.btApply = new System.Windows.Forms.Button();
@@ -63,6 +63,32 @@ namespace SendMail {
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "サーバ-情報";
             // 
+            // tbUserName
+            // 
+            this.tbUserName.Location = new System.Drawing.Point(86, 44);
+            this.tbUserName.Name = "tbUserName";
+            this.tbUserName.Size = new System.Drawing.Size(153, 19);
+            this.tbUserName.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 47);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "ユーザー名：";
+            // 
+            // cbSsl
+            // 
+            this.cbSsl.AutoSize = true;
+            this.cbSsl.Location = new System.Drawing.Point(330, 69);
+            this.cbSsl.Name = "cbSsl";
+            this.cbSsl.Size = new System.Drawing.Size(68, 16);
+            this.cbSsl.TabIndex = 2;
+            this.cbSsl.Text = "SSL有効";
+            this.cbSsl.UseVisualStyleBackColor = true;
+            // 
             // tbPort
             // 
             this.tbPort.Location = new System.Drawing.Point(330, 16);
@@ -77,13 +103,6 @@ namespace SendMail {
             this.tbPass.PasswordChar = '●';
             this.tbPass.Size = new System.Drawing.Size(153, 19);
             this.tbPass.TabIndex = 1;
-            // 
-            // tbSender
-            // 
-            this.tbSender.Location = new System.Drawing.Point(86, 18);
-            this.tbSender.Name = "tbSender";
-            this.tbSender.Size = new System.Drawing.Size(153, 19);
-            this.tbSender.TabIndex = 1;
             // 
             // tbHost
             // 
@@ -100,15 +119,6 @@ namespace SendMail {
             this.label3.Size = new System.Drawing.Size(58, 12);
             this.label3.TabIndex = 0;
             this.label3.Text = "パスワード：";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "送信元：";
             // 
             // label4
             // 
@@ -128,6 +138,22 @@ namespace SendMail {
             this.label1.TabIndex = 0;
             this.label1.Text = "送信サーバ-：";
             // 
+            // tbSender
+            // 
+            this.tbSender.Location = new System.Drawing.Point(86, 18);
+            this.tbSender.Name = "tbSender";
+            this.tbSender.Size = new System.Drawing.Size(153, 19);
+            this.tbSender.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "送信元：";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tbSender);
@@ -138,32 +164,6 @@ namespace SendMail {
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ユーザー情報";
-            // 
-            // cbSsl
-            // 
-            this.cbSsl.AutoSize = true;
-            this.cbSsl.Location = new System.Drawing.Point(330, 69);
-            this.cbSsl.Name = "cbSsl";
-            this.cbSsl.Size = new System.Drawing.Size(68, 16);
-            this.cbSsl.TabIndex = 2;
-            this.cbSsl.Text = "SSL有効";
-            this.cbSsl.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 47);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "ユーザー名：";
-            // 
-            // tbUserName
-            // 
-            this.tbUserName.Location = new System.Drawing.Point(86, 44);
-            this.tbUserName.Name = "tbUserName";
-            this.tbUserName.Size = new System.Drawing.Size(153, 19);
-            this.tbUserName.TabIndex = 1;
             // 
             // btDefault
             // 
@@ -203,6 +203,7 @@ namespace SendMail {
             this.btCancel.TabIndex = 2;
             this.btCancel.Text = "キャンセル";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // ConfigForm
             // 

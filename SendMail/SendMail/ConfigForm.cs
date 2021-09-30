@@ -10,7 +10,9 @@ using System.Windows.Forms;
 
 namespace SendMail {
     public partial class ConfigForm : Form {
-        Settings settings = new Settings();
+
+        private Settings settings = Settings.getInstance();
+
         public ConfigForm() {
             InitializeComponent();
         }
@@ -20,20 +22,29 @@ namespace SendMail {
             tbPort.Text = settings.sPort();
             tbUserName.Text = settings.sMailAddr();
             tbPass.Text = settings.sPass();
-            cbSsl.Checked = true;
+            cbSsl.Checked = settings.bSsl();
+            tbSender.Text = settings.sMailAddr();
         }
 
         private void btOk_Click(object sender, EventArgs e) {
+            Up();
             this.Close();
         }
 
         private void btApply_Click(object sender, EventArgs e) {
-            Settings settings = new Settings();
+            Up(); 
+        }
+
+        private void btCancel_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void Up() {
             settings.Host = tbPass.Text;
-            settings.Port = int.Parse(tbHost.Text);
+            settings.Port = int.Parse(tbPort.Text);
             settings.MailAddr = tbUserName.Text;
             settings.Pass = tbPass.Text;
-
+            settings.Ssl = cbSsl.Checked;
         }
     }
 }

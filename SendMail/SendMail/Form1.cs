@@ -12,6 +12,10 @@ using System.Windows.Forms;
 
 namespace SendMail {
     public partial class Form1 : Form {
+        //設定画面
+        private ConfigForm ConfigForm = new ConfigForm();
+        //設定情報
+        private Settings settings = Settings.getInstance();
         public Form1() {
             InitializeComponent();
         }
@@ -21,7 +25,7 @@ namespace SendMail {
                 //メール送信のためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
                 //差出人アドレス
-                mailMessage.From = new MailAddress("ojsinfosys01@gmail.com");
+                mailMessage.From = new MailAddress(settings.MailAddr);
                 //宛先（TO）
                 mailMessage.To.Add(tbTo.Text);
                 
@@ -36,7 +40,8 @@ namespace SendMail {
                 //SMTPを使ってメールを送信する
                 SmtpClient smtpClient = new SmtpClient();
                 //mail送信のための認証情報設定(user,password)
-                smtpClient.Credentials = new NetworkCredential("ojsinfosys01@gmail.com","Infosys2021");
+
+                smtpClient.Credentials = new NetworkCredential("ojsinfosys01@gmail.com", "Infosys2021");
                 smtpClient.Host = "smtp.gmail.com";
                 smtpClient.Port = 587;
                 smtpClient.EnableSsl = true;
@@ -51,7 +56,7 @@ namespace SendMail {
         }
 
         private void btConfig_Click(object sender, EventArgs e) {
-            new ConfigForm().ShowDialog();
+            ConfigForm.ShowDialog();
         }
     }
 }
