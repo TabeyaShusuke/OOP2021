@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SendMail {
     public class Settings {
-        private static Settings instance = null;
+        private static Settings instance = new Settings();
 
         public int Port { get; set; }//ポート番号
         public string Host { get; set; }//ホスト名
@@ -19,10 +19,7 @@ namespace SendMail {
 
         //インスタンスの取得
         public static Settings getInstance() {
-            if (instance == null) {
-                instance = new Settings();
-            }
-            return instance;
+            return Settings.instance;
         }
 
         //初期値

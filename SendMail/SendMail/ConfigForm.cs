@@ -40,7 +40,7 @@ namespace SendMail {
         }
 
         private void Up() {
-            settings.Host = tbPass.Text;
+            settings.Host = tbHost.Text;
             settings.Port = int.Parse(tbPort.Text);
             settings.MailAddr = tbUserName.Text;
             settings.Pass = tbPass.Text;

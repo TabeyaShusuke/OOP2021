@@ -12,13 +12,16 @@ using System.Windows.Forms;
 
 namespace SendMail {
     public partial class Form1 : Form {
+
         //設定画面
         private ConfigForm ConfigForm = new ConfigForm();
         //設定情報
         private Settings settings = Settings.getInstance();
+
         public Form1() {
             InitializeComponent();
         }
+        
 
         private void btSend_Click(object sender, EventArgs e) {
             try {
@@ -28,10 +31,14 @@ namespace SendMail {
                 mailMessage.From = new MailAddress(settings.MailAddr);
                 //宛先（TO）
                 mailMessage.To.Add(tbTo.Text);
-                
-                mailMessage.CC.Add(tbCc.Text);
+                if (tbCc.Text != "") {
+                    mailMessage.CC.Add(tbCc.Text);
+                }
 
-                mailMessage.Bcc.Add(tbBcc.Text);
+                if (tbBcc.Text != "") {
+                    mailMessage.Bcc.Add(tbBcc.Text);
+                }
+                
                 //件名(タイトル)
                 mailMessage.Subject = tbTitle.Text;
                 //本文
@@ -40,19 +47,20 @@ namespace SendMail {
                 //SMTPを使ってメールを送信する
                 SmtpClient smtpClient = new SmtpClient();
                 //mail送信のための認証情報設定(user,password)
-
-                smtpClient.Credentials = new NetworkCredential("ojsinfosys01@gmail.com", "Infosys2021");
-                smtpClient.Host = "smtp.gmail.com";
-                smtpClient.Port = 587;
-                smtpClient.EnableSsl = true;
-                smtpClient.Send(mailMessage);
-
-                MessageBox.Show("送信完了");
-
+                smtpClient.Credentials = new NetworkCredential(settings.MailAddr, settings.Pass);
+                smtpClient.Host = settings.Host;
+                smtpClient.Port = settings.Port;
+                smtpClient.EnableSsl = settings.Ssl;
+                smtpClient.SendMailAsync(mailMessage);
+                smtpClient.SendCompleted += SmtpClient_SendCompleted;
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e) {
+            MessageBox.Show("送信完了");
         }
 
         private void btConfig_Click(object sender, EventArgs e) {
