@@ -90,11 +90,8 @@ namespace SendMail {
                 MessageBox.Show(e.Error.Message);
             } else {
                 MessageBox.Show("送信完了");
-                tbTo.Clear();
-                tbCc.Clear();
-                tbBcc.Clear();
-                tbTitle.Clear();
-                tbMessage.Clear();
+                Clear();
+                btSend.Enabled = true;
             }
         }
 
@@ -114,6 +111,10 @@ namespace SendMail {
         }
 
         private void 新規作成NToolStripMenuItem_Click(object sender, EventArgs e) {
+            Clear();
+        }
+
+        private void Clear() {
             tbTo.Clear();
             tbCc.Clear();
             tbBcc.Clear();
