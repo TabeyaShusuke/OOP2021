@@ -13,100 +13,80 @@ namespace SampleEntityFramework {
             //    db.Database.Log = sql => { Debug.Write(sql); };
             //    var count = db.Books.Count();
             //    Console.WriteLine(count);
-
-
             //}
 
-            //using (var db = new BooksDbContext()) {
-            //    //書籍2冊以上の著者取得
-            //    var authors = db.Authors.Where(a => a.Books.Count() >= 2);
-            //    foreach (var author in authors) {
-            //        Console.WriteLine($"{author.Name}{author.Gender}{author.Birthday}");
-            //    }
-
-            //    //出版年、著者順（昇順）に並べ替え取得
-            //    var books = db.Books.OrderBy(b => b.PublishedYear)
-            //                        .ThenBy(b => b.Author.Name);
-            //    foreach (var book in books) {
-            //        Console.WriteLine($"{book.Title}{book.PublishedYear}{book.Author.Name}");
-            //    }
-
-            //    //発行年毎の書籍数を求める
-            //    var groups = db.Books.GroupBy(b => b.PublishedYear)
-            //                         .Select(g => new {
-            //                             Year = g.Key,
-            //                             Count = g.Count()
-            //                         });
-            //    foreach (var g in groups) {
-            //        Console.WriteLine($"{g.Year}{g.Count}");
-            //    }
-
-            //    //最も冊数の多い著者を1人求める
-            //    var auth = db.Authors.Where(a => a.Books.Count() == db.Authors.Max(x => x.Books.Count())).First();
-            //    Console.WriteLine($"{auth.Name}{auth.Gender}{auth.Birthday}");
-            //}
-
-            InsertBooks();
-            AddAuthors();
-            AddBooks();
-
+            
             //1
-            Addname();
-
+            Console.WriteLine("#1.1");
+            //Exercise13_1_1();
+            
             //2
-            foreach (var book in GetData()) {
+            Console.WriteLine("#1.2");
+            foreach (var book in Exercise13_1_2()) {
                 Console.WriteLine($"{book.Title} {book.PublishedYear} " +
                     $"{book.Author.Name} {book.Author.Birthday}");
             }
-            Console.WriteLine("*************************************************************");
 
-            MaxlengthTitle();
-            Console.WriteLine("*************************************************************");
+            Console.WriteLine();
+
+            Console.WriteLine("#1.3");
+            Exercise13_1_3();
+
             //4
-            OldTitle();
-            Console.WriteLine("*************************************************************");
+            Console.WriteLine("#1.4");
+            Exercise13_1_4();
+
             //5
-            DescBirth();
-            Console.WriteLine("*************************************************************");
+            Console.WriteLine("#1.5");
+            Exercise13_1_5();
+
+            Console.ReadLine();
         }
 
-        private static void DescBirth() {
+        private static void Exercise13_1_5() {
             using (var db = new BooksDbContext()) {
-                var books = db.Books.OrderByDescending(s => s.Author.Birthday);
-                foreach (var book in books) {
-                    Console.WriteLine($"{book.Title} {book.PublishedYear} {book.Author.Name} {book.Author.Birthday}");
+                var authors = db.Authors.OrderByDescending(s => s.Birthday);
+                foreach (var author in authors) {
+                    foreach (var book in author.Books) {
+                        Console.WriteLine($"{book.Title} {book.PublishedYear}");
+                    }
+                    Console.WriteLine();
                 }
+                Console.WriteLine();
             }
         }
 
-        private static void OldTitle() {
+        private static void Exercise13_1_4() {
             using (var db = new BooksDbContext()) {
                 var books = db.Books.OrderBy(s => s.PublishedYear).Take(3);
                 foreach (var book in books) {
-                    Console.WriteLine($"{book.Title} {book.Author.Name} {book.PublishedYear}");
+                    Console.WriteLine($"{book.Title} {book.Author.Name} ");
                 }
+                Console.WriteLine();
             }
         }
 
         //3
-        private static void MaxlengthTitle() {
+        private static void Exercise13_1_3() {
             using (var db = new BooksDbContext()) {
                 var author = db.Books.Where(s => s.Title.Length == db.Books.Max(a => a.Title.Length));
                 foreach (var book in author) {
                     Console.WriteLine($"{book.Title}");
                 }
+                Console.WriteLine();
             } 
         }
 
-        private static IEnumerable<Book> GetData() {
+        private static IEnumerable<Book> Exercise13_1_2() {
             using (var db = new BooksDbContext()) {
                 return db.Books.Include(nameof(Author)).ToList();
             }
         }
 
         //章末問題1
-        private static void Addname() {
+        private static void Exercise13_1_1() {
             using (var db = new BooksDbContext()) {
+                //add
                 var author3 = db.Authors.Single(a => a.Name == "夏目漱石");
                 var book1 = new Book {
                     Title = "こころ",
@@ -115,8 +95,7 @@ namespace SampleEntityFramework {
                 };
                 db.Books.Add(book1);
 
-                
-
+                //add
                 var author6 = db.Authors.Single(a => a.Name == "宮沢賢治");
                 var book4 = new Book {
                     Title = "注文の多い料理店",
@@ -124,11 +103,9 @@ namespace SampleEntityFramework {
                     Author = author6,
                 };
                 db.Books.Add(book4);
-                db.SaveChanges();
-            }
 
-            using (var db = new BooksDbContext()) {
-                var book1 = new Book {
+                //new
+                var book12 = new Book {
                     Title = "真珠婦人",
                     PublishedYear = 2002,
                     Author = new Author {
@@ -137,8 +114,9 @@ namespace SampleEntityFramework {
                         Name = "菊池寛",
                     }
                 };
-                db.Books.Add(book1);
+                db.Books.Add(book12);
 
+                //new
                 var book2 = new Book {
                     Title = "伊豆の踊子",
                     PublishedYear = 2003,
@@ -150,9 +128,7 @@ namespace SampleEntityFramework {
                 };
                 db.Books.Add(book2);
                 db.SaveChanges();
-
             }
-
         }
 
         //13-14
