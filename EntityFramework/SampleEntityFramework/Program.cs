@@ -14,19 +14,16 @@ namespace SampleEntityFramework {
             //    var count = db.Books.Count();
             //    Console.WriteLine(count);
             //}
-
             
+
             //1
             Console.WriteLine("#1.1");
             //Exercise13_1_1();
-            
+            Console.WriteLine();
+
             //2
             Console.WriteLine("#1.2");
-            foreach (var book in Exercise13_1_2()) {
-                Console.WriteLine($"{book.Title} {book.PublishedYear} " +
-                    $"{book.Author.Name} {book.Author.Birthday}");
-            }
-
+            Exercise13_1_2();
             Console.WriteLine();
 
             Console.WriteLine("#1.3");
@@ -43,10 +40,12 @@ namespace SampleEntityFramework {
             Console.ReadLine();
         }
 
+        //5
         private static void Exercise13_1_5() {
             using (var db = new BooksDbContext()) {
                 var authors = db.Authors.OrderByDescending(s => s.Birthday);
                 foreach (var author in authors) {
+                    Console.WriteLine($"{author.Name}");
                     foreach (var book in author.Books) {
                         Console.WriteLine($"{book.Title} {book.PublishedYear}");
                     }
@@ -56,6 +55,7 @@ namespace SampleEntityFramework {
             }
         }
 
+        //4
         private static void Exercise13_1_4() {
             using (var db = new BooksDbContext()) {
                 var books = db.Books.OrderBy(s => s.PublishedYear).Take(3);
@@ -77,35 +77,38 @@ namespace SampleEntityFramework {
             } 
         }
 
-        private static IEnumerable<Book> Exercise13_1_2() {
+        //2
+        private static void Exercise13_1_2() {
             using (var db = new BooksDbContext()) {
-                return db.Books.Include(nameof(Author)).ToList();
+                foreach (var book in db.Books) {
+                    Console.WriteLine($"{book.Title} {book.PublishedYear} {book.Author.Name} {book.Author.Birthday}");
+                }
             }
         }
 
-        //章末問題1
+        //1
         private static void Exercise13_1_1() {
             using (var db = new BooksDbContext()) {
                 //add
-                var author3 = db.Authors.Single(a => a.Name == "夏目漱石");
+                var author1 = db.Authors.Single(a => a.Name == "夏目漱石");
                 var book1 = new Book {
                     Title = "こころ",
                     PublishedYear = 1991,
-                    Author = author3,
+                    Author = author1,
                 };
                 db.Books.Add(book1);
 
                 //add
-                var author6 = db.Authors.Single(a => a.Name == "宮沢賢治");
-                var book4 = new Book {
+                var author2 = db.Authors.Single(a => a.Name == "宮沢賢治");
+                var book2 = new Book {
                     Title = "注文の多い料理店",
                     PublishedYear = 2000,
-                    Author = author6,
+                    Author = author2,
                 };
-                db.Books.Add(book4);
+                db.Books.Add(book2);
 
                 //new
-                var book12 = new Book {
+                var book3 = new Book {
                     Title = "真珠婦人",
                     PublishedYear = 2002,
                     Author = new Author {
@@ -114,10 +117,10 @@ namespace SampleEntityFramework {
                         Name = "菊池寛",
                     }
                 };
-                db.Books.Add(book12);
+                db.Books.Add(book3);
 
                 //new
-                var book2 = new Book {
+                var book4 = new Book {
                     Title = "伊豆の踊子",
                     PublishedYear = 2003,
                     Author = new Author {
@@ -126,7 +129,7 @@ namespace SampleEntityFramework {
                         Name = "川端康成",
                     }
                 };
-                db.Books.Add(book2);
+                db.Books.Add(book4);
                 db.SaveChanges();
             }
         }
