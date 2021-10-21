@@ -240,8 +240,5 @@ namespace SampleEntityFramework {
                 db.SaveChanges();
             }
         }
-
-
-
     }
 }
