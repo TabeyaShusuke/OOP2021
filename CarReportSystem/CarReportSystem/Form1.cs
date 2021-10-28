@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static CarReportSystem.CarReport;
 
 namespace CarReportSystem {
     public partial class fmMain : Form {
@@ -17,6 +18,29 @@ namespace CarReportSystem {
         public fmMain() {
             InitializeComponent();
             //dgvRegistData.DataSource = listCarReport;
+        }
+
+        private void setMakerRadioButton(CarReport.MakerGroup mg) {
+            switch (mg) {
+                case CarReport.MakerGroup.トヨタ:
+                    rbToyota.Checked = true;
+                    break;
+                case CarReport.MakerGroup.日産:
+                    rbNissan.Checked = true;
+                    break;
+                case CarReport.MakerGroup.ホンダ:
+                    rbHonda.Checked = true;
+                    break;
+                case CarReport.MakerGroup.スバル:
+                    rbSubaru.Checked = true;
+                    break;
+                case CarReport.MakerGroup.外国車:
+                    rbImport.Checked = true;
+                    break;
+                default:    //その他
+                    rbOther.Checked = true;
+                    break;
+            }
         }
 
         private void btExit_Click(object sender, EventArgs e) {
@@ -86,12 +110,7 @@ namespace CarReportSystem {
             //取得したデータ項目
             dtpDate.Value = selectedCar.Date;
             cbAuthor.Text = selectedCar.Auther;
-            foreach (var rb in gbMaker.Controls) {
-                if ((CarReport.MakerGroup)int.Parse(((string)((RadioButton)rb).Tag)) == selectedCar.Maker) {
-                    ((RadioButton)rb).Checked = true;
-                    break;
-                }
-            }
+            setMakerRadioButton(selectedCar.Maker);
             cbCarName.Text = selectedCar.CarName;
             tbReport.Text = selectedCar.Report;
             pbPicture.Image = selectedCar.Picture;
@@ -118,6 +137,7 @@ namespace CarReportSystem {
             carReportDataGridView.CurrentRow.Cells[3].Value = selectedGroup();//maker
             carReportDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text;//車名
             carReportDataGridView.CurrentRow.Cells[5].Value = tbReport.Text;//レポート
+            carReportDataGridView.CurrentRow.Cells[6].Value = ImageToByteArray(pbPicture.Image);//画像保存
 
             //DB反映
             this.Validate();
@@ -184,5 +204,36 @@ namespace CarReportSystem {
             this.tableAdapterManager.UpdateAll(this.infosys202125DataSet);
 
         }
+
+        private void carReportDataGridView_SelectionChanged(object sender, EventArgs e) {
+            if (carReportDataGridView.CurrentRow == null) return;
+            try {
+                dtpDate.Value = (DateTime)carReportDataGridView.CurrentRow.Cells[1].Value;
+                cbAuthor.Text = carReportDataGridView.CurrentRow.Cells[2].Value.ToString();
+                setMakerRadioButton((MakerGroup)Enum.Parse(typeof(MakerGroup), carReportDataGridView.CurrentRow.Cells[3].Value.ToString()));
+                cbCarName.Text = carReportDataGridView.CurrentRow.Cells[4].Value.ToString();
+                tbReport.Text = carReportDataGridView.CurrentRow.Cells[5].Value.ToString();
+                pbPicture.Image = ByteArrayToImage((byte[])carReportDataGridView.CurrentRow.Cells[6].Value);
+            }
+            catch (Exception) {
+                pbPicture.Image = null; 
+            }
+            
+        }
+
+
+        // バイト配列をImageオブジェクトに変換
+        public static Image ByteArrayToImage(byte[] b) {
+            ImageConverter imgconv = new ImageConverter();
+            Image img = (Image)imgconv.ConvertFrom(b);
+            return img;
+        }
+        // Imageオブジェクトをバイト配列に変換
+        public static byte[] ImageToByteArray(Image img) {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return b;
+        }
+
     }
 }
