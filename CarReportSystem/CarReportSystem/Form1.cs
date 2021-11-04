@@ -175,8 +175,12 @@ namespace CarReportSystem {
                 tbReport.Text = carReportDataGridView.CurrentRow.Cells[5].Value.ToString();
                 pbPicture.Image = ByteArrayToImage((byte[])carReportDataGridView.CurrentRow.Cells[6].Value);
             }
-            catch (Exception) {
-                pbPicture.Image = null; 
+            catch (InvalidCastException) {
+                pbPicture.Image = null;
+            }
+            catch (Exception ex) {
+                //MessageBox.Show(ex.Message); 
+                ssErrorLabel.Text = ex.Message;
             }
 
             
@@ -184,8 +188,12 @@ namespace CarReportSystem {
 
         // バイト配列をImageオブジェクトに変換
         public static Image ByteArrayToImage(byte[] b) {
-            ImageConverter imgconv = new ImageConverter();
-            Image img = (Image)imgconv.ConvertFrom(b);
+            Image img = null;
+            if (b.Length > 0) {
+                ImageConverter imgconv = new ImageConverter();
+                img = (Image)imgconv.ConvertFrom(b);
+
+            }
             return img;
         }
 
@@ -196,12 +204,13 @@ namespace CarReportSystem {
             return b;
         }
 
+        //dgv error
         private void carReportDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {
 
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e) {
-            dtpDate.ResetText();
+            dtpDate.Value = DateTime.Now;
             cbAuthor.ResetText();
             setMakerRadioButton(MakerGroup.その他);
             cbCarName.ResetText();
