@@ -11,6 +11,7 @@
     <Window.DataContext>
         <SampleUnitConverter:MainWindowViewModel />
     </Window.DataContext>
+    
     <StackPanel Margin="4">
         <StackPanel Orientation="Horizontal">
             <TextBox Width="100"  Margin="4" 
@@ -21,9 +22,9 @@
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="40" Margin="4" Content="▲"
+            <Button Width="40" Margin="4" Content="▲" Background="{StaticResource ButtonBrushKey}"
                     Command="{Binding ImperialUnitToMetric}"/>
-            <Button Width="40" Margin="4" Content="▼"
+            <Button Width="40" Margin="4" Content="▼" Background="{StaticResource ButtonBrushKey}"
                     Command="{Binding MetricToImperialUnit}"/>
         </StackPanel>
         
