@@ -31,13 +31,14 @@ namespace NumberGame {
            
             var count = int.Parse(((Button)sender).Content.ToString());
             sw.Start();
-            this.timer.Text = sw.Elapsed.ToString(@"hh\:mm\:ss\.ff");
+            this.timer.Text = sw.Elapsed.ToString(@"mm\:ss\.ff");
 
 
             var timer = new DispatcherTimer(DispatcherPriority.Normal) {
                 // インターバルを設定
-                Interval = TimeSpan.FromSeconds(1.0),
+                Interval = TimeSpan.FromSeconds(0.1),
             };
+
             timer.Tick += Timer_Tick;
             timer.Start();
 
@@ -49,14 +50,14 @@ namespace NumberGame {
                 this.comment.Text = "もっと小さい数です↓↓↓";
             } else {
                 this.comment.Text = "それ正解!!!!!!!!!!!!!!!";
-                timer.Stop();
+                sw.Stop();
             }
 
             
         }
 
         private void Timer_Tick(object sender, EventArgs e) {
-            this.timer.Text = sw.Elapsed.ToString(@"hh\:mm\:ss\.ff");
+            this.timer.Text = sw.Elapsed.ToString(@"mm\:ss\.ff");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
