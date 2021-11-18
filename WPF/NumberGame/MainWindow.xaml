@@ -8,7 +8,7 @@
         x:Name="MainForm"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <StackPanel>
-        <TextBlock x:Name="timer" Height="20" Width="50" />
+        <TextBlock x:Name="timera" Height="20" Width="50" />
         <Grid x:Name="grid">
             
         </Grid>

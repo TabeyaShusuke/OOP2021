@@ -66,7 +66,7 @@ namespace NumberGame {
         private void Button_Click(object sender, RoutedEventArgs e) {
             var count = int.Parse(((Button)sender).Content.ToString());
             sw.Start();
-            this.timer.Text = sw.Elapsed.ToString(@"mm\:ss\.ff");
+            this.timera.Text = sw.Elapsed.ToString(@"mm\:ss\.ff");
             var timer = new DispatcherTimer(DispatcherPriority.Normal) {
                 // インターバルを設定
                 Interval = TimeSpan.FromSeconds(0.1),
@@ -86,7 +86,7 @@ namespace NumberGame {
             }
 
         private void Timer_Tick(object sender, EventArgs e) {
-            this.timer.Text = sw.Elapsed.ToString(@"mm\:ss\.ff");
+            this.timera.Text = sw.Elapsed.ToString(@"mm\:ss\.ff");
         }
     }
 }
