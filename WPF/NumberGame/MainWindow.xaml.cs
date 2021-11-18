@@ -21,49 +21,72 @@ namespace NumberGame {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
-        int collect = 0;
+        
+        private Random random = new Random();
+        private int answerNum;
+        private const int Rows = 5;     //行
+        private const int Columns = 6;  //列
         Stopwatch sw = new Stopwatch();
-        public MainWindow() {
-            InitializeComponent();
+
+        private SolidColorBrush selectedButtonColor = new SolidColorBrush(Colors.Yellow);
+        private SolidColorBrush hitButtonColor = new SolidColorBrush(Colors.Red);
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            List<Button> buttons = new List<Button>();
+            //正解を取得
+            answerNum = random.Next(Rows * Columns) + 1;
+
+            //行
+            for (int i = 0; i < Rows; i++) {
+                grid.RowDefinitions.Add(new RowDefinition());
+            }
+            //列
+            for (int i = 0; i < Columns; i++) {
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            int count = 0;
+            for (int i = 0; i < Rows; i++) {
+                for (int j = 0; j < Columns; j++) {
+                    var bt = new Button();
+                    bt.Width = MainForm.Width / Columns;
+                    bt.Height = MainForm.Height / Rows;
+                    bt.Content = ++count;
+                    bt.FontSize = 20;
+                    bt.Click += Button_Click;
+                    Grid.SetRow(bt, i);
+                    Grid.SetColumn(bt, j);
+                    buttons.Add(bt);
+                }
+            }
+            buttons.ForEach(bt => grid.Children.Add(bt));
+            MainForm.Height += textDisp.Height + 50;
+
         }
 
-        private void bt_click(object sender, RoutedEventArgs e) {
-           
+        private void Button_Click(object sender, RoutedEventArgs e) {
             var count = int.Parse(((Button)sender).Content.ToString());
             sw.Start();
             this.timer.Text = sw.Elapsed.ToString(@"mm\:ss\.ff");
-
-
             var timer = new DispatcherTimer(DispatcherPriority.Normal) {
                 // インターバルを設定
                 Interval = TimeSpan.FromSeconds(0.1),
             };
-
             timer.Tick += Timer_Tick;
             timer.Start();
-
-            if (count < collect) {
+            if (count < answerNum) {
                 //大きい
-                this.comment.Text = "もっと大きい数です↑↑↑";
-            } else if (count > collect) {
+                textDisp.Text = "もっと大きい数です↑↑↑";
+            } else if (count > answerNum) {
                 //小さい
-                this.comment.Text = "もっと小さい数です↓↓↓";
+                textDisp.Text = "もっと小さい数です↓↓↓";
             } else {
-                this.comment.Text = "それ正解!!!!!!!!!!!!!!!";
+                textDisp.Text = "それ正解!!!!!!!!!!!!!!!";
                 sw.Stop();
             }
-
-            
-        }
+            }
 
         private void Timer_Tick(object sender, EventArgs e) {
             this.timer.Text = sw.Elapsed.ToString(@"mm\:ss\.ff");
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e) {
-            Random r = new Random();
-            collect = r.Next(1, 25);
-        }
-
     }
 }
