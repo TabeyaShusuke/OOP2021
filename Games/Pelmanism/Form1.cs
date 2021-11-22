@@ -13,7 +13,7 @@ namespace Pelmanism {
         private Card[] playingCards;//遊ぶカードの束
         private Player player;//プレイヤー
         private int gameSec;//ゲーム時間
-        private int duration = 5;
+        
         public FormGame() {
             InitializeComponent();
         }
@@ -140,10 +140,7 @@ namespace Pelmanism {
         }
 
         private void buttonStart_Click(object sender, EventArgs e) {
-            timer1.Tick += Timer1_Tick;
-            timer1.Interval = 1000;
-            timer1.Start();
-            labelSec.Text = "あと" + duration.ToString() + "秒";
+            
             //card シャッフル
             ShuffleCard(playingCards);
             //全部のカードを伏せる
@@ -151,22 +148,10 @@ namespace Pelmanism {
                 card.Close();
             }
             buttonStart.Enabled = false;//スタートボタン選択不可
-            gameSec = 0;
+            gameSec = 5;
             timer1.Start();
 
             labelGuidance.Text = "クリックしてカードをめくってください。";
-        }
-
-        private void Timer1_Tick(object sender, EventArgs e) {
-            if (duration == 0) {
-                timer1.Stop();
-                labelGuidance.Text = "Game Over"; 
-                labelSec.Text = "時間切れ";
-                //this.Close();
-            } else if (duration > 0) {
-                duration--;
-                labelSec.Text = "あと" + duration.ToString() + "秒";
-            }
         }
 
         /// <summary>
@@ -187,8 +172,16 @@ namespace Pelmanism {
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
-            gameSec++;
-            labelSec.Text = gameSec + "秒経過";
+            if (gameSec == 0) {
+                timer1.Stop();
+                labelSec.Text = "終了";
+                labelGuidance.Text = "Game Over";
+                buttonStart.Enabled = true;
+            } else if (gameSec > 0) {
+                gameSec--;
+                labelSec.Text = "残り" + gameSec + "秒";
+            }
+            
         }
     }
 }
