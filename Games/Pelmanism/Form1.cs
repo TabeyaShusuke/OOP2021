@@ -13,7 +13,7 @@ namespace Pelmanism {
         private Card[] playingCards;//遊ぶカードの束
         private Player player;//プレイヤー
         private int gameSec;//ゲーム時間
-
+        private int duration = 5;
         public FormGame() {
             InitializeComponent();
         }
@@ -23,8 +23,12 @@ namespace Pelmanism {
         /// </summary>
         /// <param name="cards">カード配列への参照</param>
         private void CreateCards(ref Card[] cards) {
-            string[] picture = {"〇", "●", "△", "▲", "□", "■",
-                "◇", "◆", "☆", "★","※","×", };
+            Image[] picture = {Image.FromFile(@"C:\Users\infosys\Downloads\a.jpg"), Image.FromFile(@"C:\Users\infosys\Downloads\b.jpg"),
+            Image.FromFile(@"C:\Users\infosys\Downloads\d.jpg"),Image.FromFile(@"C:\Users\infosys\Downloads\e.jpg"),
+            Image.FromFile(@"C:\Users\infosys\Downloads\g.jpg"),Image.FromFile(@"C:\Users\infosys\Downloads\k.jpg"),
+            Image.FromFile(@"C:\Users\infosys\Downloads\l.jpg"),Image.FromFile(@"C:\Users\infosys\Downloads\m.jpg"),
+            Image.FromFile(@"C:\Users\infosys\Downloads\n.jpg"),Image.FromFile(@"C:\Users\infosys\Downloads\o.jpg"),
+            Image.FromFile(@"C:\Users\infosys\Downloads\p.jpg"),Image.FromFile(@"C:\Users\infosys\Downloads\q.jpg"),};
 
             //カードのインスタンスの生成
             cards = new Card[picture.Length * 2];
@@ -136,6 +140,10 @@ namespace Pelmanism {
         }
 
         private void buttonStart_Click(object sender, EventArgs e) {
+            timer1.Tick += Timer1_Tick;
+            timer1.Interval = 1000;
+            timer1.Start();
+            labelSec.Text = "あと" + duration.ToString() + "秒";
             //card シャッフル
             ShuffleCard(playingCards);
             //全部のカードを伏せる
@@ -149,6 +157,17 @@ namespace Pelmanism {
             labelGuidance.Text = "クリックしてカードをめくってください。";
         }
 
+        private void Timer1_Tick(object sender, EventArgs e) {
+            if (duration == 0) {
+                timer1.Stop();
+                labelGuidance.Text = "Game Over"; 
+                labelSec.Text = "時間切れ";
+            } else if (duration > 0) {
+                duration--;
+                labelSec.Text = "あと" + duration.ToString() + "秒";
+            }
+        }
+
         /// <summary>
         /// カードを混ぜる
         /// </summary>
@@ -160,7 +179,7 @@ namespace Pelmanism {
             for (int i = a-1; i > 0; i--) {
                 a--;
                 int shuffle = r.Next(a + 1);
-                string nesting = playingCards[shuffle].Picture;
+                var nesting = playingCards[shuffle].Picture;
                 playingCards[shuffle].Picture = playingCards[a].Picture;
                 playingCards[a].Picture = nesting;
             }
