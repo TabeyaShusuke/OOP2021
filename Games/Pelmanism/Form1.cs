@@ -162,6 +162,7 @@ namespace Pelmanism {
                 timer1.Stop();
                 labelGuidance.Text = "Game Over"; 
                 labelSec.Text = "時間切れ";
+                //this.Close();
             } else if (duration > 0) {
                 duration--;
                 labelSec.Text = "あと" + duration.ToString() + "秒";

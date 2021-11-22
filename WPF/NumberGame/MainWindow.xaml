@@ -12,7 +12,7 @@
         <Grid x:Name="grid">
             
         </Grid>
-        <TextBlock x:Name="textDisp" Height="50" Width="50" TextWrapping="Wrap"/>
+        <TextBlock x:Name="textDisp" Height="75" Width="75" TextWrapping="Wrap"/>
     </StackPanel>
     
 </Window>
